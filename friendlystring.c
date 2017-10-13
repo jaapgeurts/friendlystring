@@ -30,7 +30,7 @@ typedef struct {
 	int length;
 } fs_string_info;
 
-fstring fstring_alloc() {
+fstring fs_alloc() {
 	struct fs_string_info* fs_info = malloc(sizeof(struct fs_string_info));
 	fs_info->ref_count = length = 0;
 	fs_info->fs_string = malloc(sizeof(char) + sizeof(struct fs_string_info*));
@@ -40,7 +40,7 @@ fstring fstring_alloc() {
 	return &(fs_info->c1);
 }
  
- void fstring_retain(fstring fstr)
+ void fs_retain(fstring fstr)
  {
  	 fs_string* fs_str = (fs_string)(fstr - sizeof(struct fs_string_info*));
  	 fs_string_info* fs_info = fs_str->info;
@@ -69,10 +69,6 @@ fstring fstring_alloc() {
  	 fs_string* fs_str = (fs_string)(fstr - sizeof(struct fs_string_info*));
  	 fs_string_info* fs_info = fs_str->info;
  	 return fs_info->length;
- }
- 
- void fs_concat(fstring fstr1, fstring fstr2)
- {
  }
  
  int fs_find(fstring, char);

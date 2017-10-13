@@ -20,9 +20,9 @@
  typedef char* fstring;
  
  
- fstring fstring_alloc();
+ fstring fs_alloc();
  
- void fstring_retain(fstring);
+ void fs_retain(fstring);
  
  void fs_release(fstring);
 
